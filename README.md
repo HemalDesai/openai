@@ -2,18 +2,18 @@
 git clone https://github.com/HemalDesai/openai.git
 
 # Navigate to the folder
-cd openai
+cd openai<br>
 
 # Backend setup
-cd server
-npm i
-node index.js
+cd server<br>
+npm i<br>
+node index.js<br>
 
 # Keep the server running
 
 # Frontend setup
-cd ../client
-npm i
-npm run dev
+cd ../client<br>
+npm i<br>
+npm run dev<br>
 
 Enjoy!!
