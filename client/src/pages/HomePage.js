@@ -79,7 +79,6 @@ export default function ImageGenerator() {
     }
   };
 
-  
   const saveImageToStorage = async () => {
     try {
       const imageRef = storageRef(
@@ -98,92 +97,89 @@ export default function ImageGenerator() {
 
   return (
     <div className="container">
-  <h1 className="welcome-text">Welcome {username}</h1>
-  <input
-    type="text"
-    value={prompt}
-    onChange={(e) => setPrompt(e.target.value)}
-    placeholder="Enter your prompt"
-    className="input"
-  />
-  <div className="button-container">
-    <button onClick={generateImage} className="button">
-      Generate Image
-    </button>
-    <button onClick={() => handleLogout()} className="button">
-    Logout
-  </button>
-    
-  </div>
-  
-  <a href="/Gallery" className="gallery-link">
-      Gallery
-    </a>
-  {imageUrl && (
-    <img src={imageUrl} alt="Generated Image" className="image" />
-  )}
+      <h1 className="welcome-text">Welcome {username}</h1>
+      <input
+        type="text"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Enter your prompt"
+        className="input"
+      />
+      <div className="button-container">
+        <button onClick={generateImage} className="button">
+          Generate Image
+        </button>
+        <button onClick={() => handleLogout()} className="button">
+          Logout
+        </button>
+      </div>
 
-  <style jsx>{`
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
+      <a href="/Gallery" className="gallery-link">
+        Gallery
+      </a>
+      {imageUrl && (
+        <img src={imageUrl} alt="Generated Image" className="image" />
+      )}
 
-    .welcome-text {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #333;
-    }
+      <style jsx>{`
+        .container {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          text-align: center;
+        }
 
-    .input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+        .welcome-text {
+          font-size: 24px;
+          margin-bottom: 20px;
+          color: #333;
+        }
 
-    .button-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
+        .input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
 
-    .button {
-      padding: 10px 20px;
-      background-color: #F3FE39;
-      color: black;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
+        .button-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 10px;
+        }
 
-    .gallery-link {
-        text-decoration: none;
-        color: #333;
-        background-color: #F3FE39;
-        padding: 10px 20px;
-        border-radius: 4px;
-      }
-  
-      .gallery-link:hover {
-        text-decoration: underline;
-      }
+        .button {
+          padding: 10px 20px;
+          background-color: #f3fe39;
+          color: black;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+        }
 
-    .image {
-      max-width: 100%;
-      margin-top: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  `}</style>
-</div>
+        .gallery-link {
+          text-decoration: none;
+          color: #333;
+          background-color: #f3fe39;
+          padding: 10px 20px;
+          border-radius: 4px;
+        }
 
+        .gallery-link:hover {
+          text-decoration: underline;
+        }
 
+        .image {
+          max-width: 100%;
+          margin-top: 20px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
+    </div>
   );
 }

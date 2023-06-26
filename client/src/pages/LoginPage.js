@@ -36,11 +36,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-  <button style={{ backgroundColor: '#4285f4', color: '#fff', border: 'none', borderRadius: '4px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }} onClick={signInWithGoogle}>Sign in with Google</button>
-</div>
-
-
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <button
+        style={{
+          backgroundColor: "#4285f4",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+        onClick={signInWithGoogle}
+      >
+        Sign in with Google
+      </button>
+    </div>
   );
 }
 
