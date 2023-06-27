@@ -14,7 +14,7 @@ import {
   ref,
   uploadBytes,
   getDownloadURL,
-  putString 
+  putString,
 } from "firebase/storage";
 import { decode } from "base-64";
 
@@ -75,36 +75,28 @@ export default function ImageGenerator() {
 
       const storageRef = ref(storage, `images/${userID}/${Date.now()}.jpg`);
       const byteCharacters = atob(data.photo);
-    const byteArrays = [];
-    for (let offset = 0; offset < byteCharacters.length; offset += 512) {
-      const slice = byteCharacters.slice(offset, offset + 512);
-      const byteNumbers = new Array(slice.length);
-      for (let i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
+      const byteArrays = [];
+      for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+        const slice = byteCharacters.slice(offset, offset + 512);
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
       }
-      const byteArray = new Uint8Array(byteNumbers);
-      byteArrays.push(byteArray);
-    }
-    const blob = new Blob(byteArrays, { type: "image/jpeg" });
+      const blob = new Blob(byteArrays, { type: "image/jpeg" });
 
-    // Upload the Blob to Firebase Storage
-    await uploadBytes(storageRef, blob, "data_url");
+      // Upload the Blob to Firebase Storage
+      await uploadBytes(storageRef, blob, "data_url");
 
-    console.log("Image uploaded to Firebase Storage!");
+      console.log("Image uploaded to Firebase Storage!");
 
-    // ...existing code...
-  
-
-     
+      // ...existing code...
     } catch (error) {
       console.error("Error generating image:", error);
     }
   };
-
-  
-
- 
-  
 
   return (
     <div className="container">
