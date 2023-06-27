@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 import { initializeApp } from "firebase/app";
 import HomePage from "@/pages/HomePage";
 

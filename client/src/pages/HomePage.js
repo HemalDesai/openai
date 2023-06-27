@@ -2,7 +2,7 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { auth, app, database, storage } from "./firebase";
+import { auth, app, database, storage } from "../firebase";
 import {
   getDatabase,
   ref as databaseRef,

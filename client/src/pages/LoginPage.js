@@ -3,7 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/router";
 
 import { useEffect } from "react";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 
 const provider = new GoogleAuthProvider();
 

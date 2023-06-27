@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
-import { auth, app, database, storage } from "./firebase";
+import { auth, app, database, storage } from "../firebase";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Images() {
