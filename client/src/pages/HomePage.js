@@ -11,9 +11,10 @@ import {
 } from "firebase/database";
 import {
   getStorage,
-  ref as storageRef,
+  ref,
   uploadBytes,
   getDownloadURL,
+  putString 
 } from "firebase/storage";
 import { decode } from "base-64";
 
@@ -72,28 +73,38 @@ export default function ImageGenerator() {
       setImageUrl(`data:image/jpeg;base64,${data.photo}`);
       console.log(imageUrl);
 
-      //   await saveImageToDatabase();
-      await saveImageToStorage();
+      const storageRef = ref(storage, `images/${userID}/${Date.now()}.jpg`);
+      const byteCharacters = atob(data.photo);
+    const byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+      const slice = byteCharacters.slice(offset, offset + 512);
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+    const blob = new Blob(byteArrays, { type: "image/jpeg" });
+
+    // Upload the Blob to Firebase Storage
+    await uploadBytes(storageRef, blob, "data_url");
+
+    console.log("Image uploaded to Firebase Storage!");
+
+    // ...existing code...
+  
+
+     
     } catch (error) {
       console.error("Error generating image:", error);
     }
   };
 
-  const saveImageToStorage = async () => {
-    try {
-      const imageRef = storageRef(
-        storage,
-        `images/${userID}/${Date.now()}.jpg`
-      ); // Set the image path in the storage bucket
-      const binaryData = Buffer.from(imageUrldb, "base64");
-      await uploadBytes(imageRef, binaryData); // Upload the image to Firebase Cloud Storage
-      const downloadURL = await getDownloadURL(imageRef); // Get the download URL of the uploaded image
-      setSavedImageUrl(downloadURL);
-      console.log("Image saved to Firebase Cloud Storage.");
-    } catch (error) {
-      console.error("Error saving image:", error);
-    }
-  };
+  
+
+ 
+  
 
   return (
     <div className="container">
